@@ -197,4 +197,6 @@ const imgObserver = new IntersectionObserver(loading, {
   rootMargin: '200px',
 });
 
-imgTargets.forEach(el => imgObserver.observe(el));
+imgTargets.forEach(img => imgObserver.observe(img));
+
+///////////Slider Component//////////////////////////////////////////////////////////////////////////////////
