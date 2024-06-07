@@ -200,3 +200,118 @@ const imgObserver = new IntersectionObserver(loading, {
 imgTargets.forEach(img => imgObserver.observe(img));
 
 ///////////Slider Component//////////////////////////////////////////////////////////////////////////////////
+// Using Transform property with translateX 0%,100%,200% will keep containers side by side
+
+// Selecting Elements for slider
+
+const slides = document.querySelectorAll('.slide'); // all slide containers
+const btnLeft = document.querySelector('.slider__btn--left');
+const btnRight = document.querySelector('.slider__btn--right');
+
+// for dot
+const dotsContainer = document.querySelector('.dots');
+
+// placeholder variable to identify current slide and length of slides
+let curSlide = 0;
+const maxSlide = slides.length;
+
+// function for dots
+const createDots = function () {
+  slides.forEach((_, i) => {
+    dotsContainer.insertAdjacentHTML(
+      'beforeend',
+      `<button class ='dots__dot' data-slide='${i}'></button>`
+    );
+  });
+};
+
+const activateDots = function (slide) {
+  // removing dots__dot active class from all dot elements
+  document
+    .querySelectorAll('.dots__dot')
+    .forEach(dot => dot.classList.remove('dots__dot--active'));
+
+  document
+    .querySelector(`.dots__dot[data-slide="${slide}"]`)
+    .classList.add('dots__dot--active');
+};
+
+// function to go to next slide by transform property to translateX
+const goToSlide = function (curSlide) {
+  // for each slide , curSlide 0
+  // i = 0 => 100 * (0-0) => 0%
+  // i = 1 => 100 * (1-0) => 100%
+  // i = 2 => 100 * (2 * 0) => 200%
+  slides.forEach((s, i) => {
+    s.style.transform = `translateX(${100 * (i - curSlide)}%)`;
+  });
+};
+
+const init = function () {
+  // calling function first tiem with curSlide = 0
+  goToSlide(0);
+  createDots();
+  activateDots(0);
+};
+init();
+// function for next slide
+const nextSlide = function () {
+  // once currSlide reaches last slides then it has to get back to first slide
+  if (curSlide === maxSlide - 1) {
+    curSlide = 0;
+  } else {
+    curSlide++;
+  }
+  goToSlide(curSlide);
+  activateDots(curSlide);
+};
+btnRight.addEventListener('click', nextSlide);
+
+const prevSlide = function () {
+  if (curSlide === 0) {
+    curSlide = maxSlide;
+  }
+  curSlide--;
+  goToSlide(curSlide);
+  activateDots(curSlide);
+};
+btnLeft.addEventListener('click', prevSlide);
+
+// arrowKEys event
+document.addEventListener('keydown', function (e) {
+  if (e.key === 'ArrowLeft') prevSlide();
+  e.key === 'ArrowRight' && nextSlide();
+});
+
+// dotsCotainer
+dotsContainer.addEventListener('click', function (e) {
+  if (e.target.classList.contains('dots__dot')) {
+    // Object destructing
+    const { slide } = e.target.dataset;
+    goToSlide(slide);
+    activateDots(slide);
+  }
+});
+
+// Login Credentials
+// Example usage:
+const usernameInput = document.querySelector('.login__input');
+const passwordInput = document.querySelector('.login__password');
+const loginBtn = document.querySelector('.login__btn');
+
+// Assume these are the correct login credentials
+const correctUsername = 'js';
+const correctPassword = 1111;
+
+loginBtn.addEventListener('click', function (e) {
+  e.preventDefault();
+  // if (
+  //   usernameInput.value === correctUsername &&
+  //   Number(passwordInput.value) === correctPassword
+  // ) {
+  //   window.location.href = '/app.html';
+  // } else {
+  //   alert('Incorrect username or password');
+  // }
+  window.location.href = '/app.html';
+});

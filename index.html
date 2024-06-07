@@ -34,7 +34,7 @@
           </li>
           <li class="nav__item">
             <a class="nav__link nav__link--btn btn--show-modal" href="#"
-              >Login</a
+              >Demo</a
             >
           </li>
         </ul>
@@ -253,7 +253,6 @@
             </address>
           </div>
         </div>
-
         <div class="slide slide--3">
           <div class="testimonial">
             <h5 class="testimonial__header">
@@ -275,10 +274,12 @@
           </div>
         </div>
 
-        <!-- <div class="slide"><img src="img/img-1.jpg" alt="Photo 1" /></div>
-        <div class="slide"><img src="img/img-2.jpg" alt="Photo 2" /></div>
-        <div class="slide"><img src="img/img-3.jpg" alt="Photo 3" /></div>
-        <div class="slide"><img src="img/img-4.jpg" alt="Photo 4" /></div> -->
+        <!-- 
+                <div class="slide"><img src="img/img-1.jpg" alt="Photo 1" /></div>
+                <div class="slide"><img src="img/img-2.jpg" alt="Photo 2" /></div>
+                <div class="slide"><img src="img/img-3.jpg" alt="Photo 3" /></div>
+                <div class="slide"><img src="img/img-4.jpg" alt="Photo 4" /></div> 
+                -->
         <button class="slider__btn slider__btn--left">&larr;</button>
         <button class="slider__btn slider__btn--right">&rarr;</button>
         <div class="dots"></div>
@@ -292,7 +293,7 @@
           today!
         </h3>
       </div>
-      <button class="btn btn--show-modal">Login today and now!</button>
+      <button class="btn btn--show-modal">Demo Now!</button>
     </section>
 
     <footer class="footer">
@@ -334,18 +335,19 @@
 
     <div class="modal hidden">
       <button class="btn--close-modal">&times;</button>
-      <h2 class="demo"><span class="highlight">Demo - Username: js and password: 1111</h2>
-      </span>
+      <h2 class="demo">
+        <span class="highlight">Demo - Username: js and password: 1111 </span>
+      </h2>
       <h2 class="modal__header">
         Login into your<br />
         <span class="highlight">bank account </span>
       </h2>
       <form class="modal__form">
-        <label>Username</label>
-        <input type="text" />
+        <!-- <label>Username</label>
+        <input type="text" class="login__input" />
         <label>Password</label>
-        <input type="password" />
-        <button class="btn">Login &rarr;</button>
+        <input type="password" class="login__password" /> -->
+        <button class="btn login__btn">Login &rarr;</button>
       </form>
     </div>
     <div class="overlay hidden"></div>
